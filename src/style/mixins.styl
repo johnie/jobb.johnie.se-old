@@ -1,0 +1,31 @@
+/*------------------------------------*
+   $MIXINS
+*------------------------------------*/
+/**
+ * Various handy mixins
+ */
+
+vendor(prop, val)
+  -webkit-{prop} val
+  -moz-{prop} val
+  -ms-{prop} val
+  {prop} val
+
+clearfix()
+  zoom 1
+  &:after
+  &:before
+    content ""
+    display table
+  &:after
+    clear both
+
+visuallyhidden()
+  position absolute
+  overflow hidden
+  clip rect(0 0 0 0)
+  height 1px
+  width 1px
+  margin -1px
+  padding 0
+  border 0

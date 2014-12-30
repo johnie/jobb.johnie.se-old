@@ -1,0 +1,26 @@
+{
+  "name": "jobbamedjohnie",
+  "version": "0.0.1",
+  "authors": [
+    "Johnie Hjelm <johnie.hjelm@symbio.com>"
+  ],
+  "description": "Career site for working with Johnie as an Personal Helper",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "http://jobb.johnie.se",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.8",
+    "angular-route": "~1.3.8",
+    "fastclick": "~1.0.3",
+    "svgeezy": "~1.0.0",
+    "fancyselect": "~1.1.0"
+  }
+}

@@ -1,0 +1,102 @@
+/*------------------------------------* 
+   $GRIDS 
+*------------------------------------*/
+
+/** 
+ * Container
+ */
+.container
+  max-width 850px
+  margin 0 auto
+
+/** 
+ * Grid wrapper 
+ */
+.grid
+  margin-left - $base-spacing-unit
+  list-style none
+  margin-bottom 0
+  clearfix()
+
+/** 
+ * Very infrequently occuring grid wrappers as children of grid wrappers. 
+ */
+.grid > .grid
+  margin-left 0
+
+/** 
+ * Grid 
+ */
+.grid__item
+  display inline-block
+  padding-left $base-spacing-unit
+  vertical-align top
+  float left
+
+/** 
+ * Flexbox grid 
+ */
+.flexbox
+  display table
+  width 100%
+
+/**
+ * Nasty hack to circumvent Modernizr conflicts.
+ */
+html.flexbox
+  display block
+  width auto
+
+.flexbox__item
+  display table-cell
+  vertical-align middle
+
+/** 
+ * Widths 
+ */
+.one-small
+  width 2%
+.one-medium
+  width 4%
+.one-tenth
+  width 10%
+.two-tenths
+  width 20%
+.three-tenths
+  width 30%
+.four-tenths
+  width 40%
+.five-tenths
+  width 50%
+.six-tenths
+  width 60%
+.seven-tenths
+  width 70%
+.eight-tenths
+  width 80%
+.nine-tenths
+  width 90%
+.one-half
+  width 50%
+.one-whole
+  width 100%
+
+
+/** 
+ * Helpers 
+ */
+.pos--relative
+  position relative !important
+  clearfix()
+
+.border-top
+  border-top 1px solid #E6E6E6 !important
+
+.border-bottom
+  border-bottom 1px solid #E6E6E6 !important
+
+.text--left
+  text-align left !important
+
+.text--right
+  text-align right !important

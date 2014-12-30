@@ -1,0 +1,88 @@
+/*------------------------------------*
+   $CONTACT FORM
+*------------------------------------*/
+
+.contact
+  padding 2em 0
+  clearfix()
+
+  input, textarea
+    background-color transparent
+
+  input::-ms-clear
+    width 0
+    height 0
+
+  @media (max-width: 40em)
+    padding 1em 0
+    overflow hidden
+
+.contact-form__block
+  margin-bottom 1.5em
+
+  @media (max-width: 40em)
+    width 100% !important
+
+.asterix
+  color #B94A48
+
+.input__label
+  text-transform uppercase
+  font-weight 600
+  display block
+  font-size 1.1em
+  margin-bottom 8px
+  letter-spacing 1px
+
+.input__field, .textarea
+  width 100%
+  border none
+  vendor('transition', border-left .2s ease)
+
+  &:focus
+    outline none
+    border-left 6px solid $link-color
+
+.input__field
+  font-size 1.6em
+  font-weight 300
+  padding 5px 10px
+  line-height 1.5
+  vendor('border-radius', 0)
+
+  @media (max-width: 40em)
+    font-size 1.3em
+
+.textarea
+  font-size 1.2em
+  font-weight 300
+  line-height 1.5
+  padding 10px
+  resize none
+  vendor('border-radius', 0)
+
+.input__file
+  margin-top 15px
+
+.submit-btn
+  -webkit-appearance none
+  background $link-color !important
+  line-height 2.5
+  color #fff
+  text-align center
+  width 100%
+  border none
+  font-size 1.5em
+  padding-top 5px
+  vendor('border-radius', 4px)
+  text-transform uppercase
+  font-weight 600
+  letter-spacing 2px
+  vendor('transition', background .2s ease)
+
+  &:hover, &:focus
+    background lighten($link-color, 20%) !important
+
+  @media (max-width: 40em)
+    line-height 2
+    font-size 1.2em

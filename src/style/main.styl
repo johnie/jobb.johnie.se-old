@@ -1,0 +1,224 @@
+/*------------------------------------*
+   $MAIN
+*------------------------------------*/
+/**
+ * Main styles
+ * (Keeping it in one file due to the projects small size)
+ */
+
+if $global-border-box
+  *, *:before, *:after
+    vendor('box-sizing', border-box)
+
+body
+  font-family $base-font-family
+  color $base-color
+  padding 0
+  margin 0
+
+/**
+ * Resets
+ */
+a
+  text-decoration none
+  color $link-color
+  font-weight 400
+  vendor('transition', color .2s)
+
+  &:hover
+    color $base-color
+
+p
+  font-size 1.25em
+  line-height 1.68
+  font-weight 300
+
+  @media (max-width: 40em)
+    font-size 1em
+
+ul
+  font-size 1.1em
+  line-height 1.5
+  margin 0
+
+h3
+  font-weight 600
+  font-size 1.4em
+  margin 0
+  padding 0
+  margin-bottom .5em
+
+/**
+ * BASE
+ */
+.presentation
+  margin 0
+  position fixed
+  top 0
+  left 0
+  width 33.333333%
+  height 100%
+  background $base-color url('images/johnie_hel.jpg') top center no-repeat
+  vendor('background-size', cover)
+
+  &:before
+    content ''
+    display block
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    background-color $base-color
+    opacity .3
+
+  @media (max-width: 40em)
+    position relative
+    width 100%
+    height auto
+    padding-bottom 100%
+    z-index 5
+
+.night-mode__btn
+  position absolute
+  top 1.2em
+  left -2.5em
+  z-index 100
+  cursor pointer
+
+  input[type="checkbox"]
+    z-index -1
+    display none
+
+  span
+    display block
+    width 2em
+    height 2em
+    background transparent url('images/moon_dark.svg') center center no-repeat
+    vendor('background-size', 100%)
+
+    &.moon
+      background-image url('images/sun.svg')
+
+  @media (max-width: 40em)
+    top -2.7em
+    right 1.2em
+    left auto
+
+.social
+  display inline-block
+  position absolute
+  bottom .5em
+  left .5em
+  z-index 5
+
+  *
+    vendor('box-sizing', initial)
+
+.main
+  position relative
+  width 66.666666%
+  height 100%
+  float right
+  padding 3em 3.5em
+  vendor('transition', all .1s ease)
+
+  &.night-mode
+    background-color $base-color
+    color #fff
+
+    a:hover
+      color #fff
+
+  &:before
+    content ''
+    display block
+    width 0
+    height 0
+    border 3.5em solid transparent
+    border-top-color white
+    border-right-color white
+    position absolute
+    top 0
+    right 100%
+    z-index 5
+    vendor('transition', all .1s ease)
+
+  &.night-mode
+    &:before
+      border-top-color $base-color
+      border-right-color $base-color
+
+  @media (max-width: 40em)
+    position relative
+    width 100%
+    height auto
+    padding 1em
+    float none
+    height auto
+
+    &:before
+      bottom 100%
+      right 0
+      top auto
+      border-top-color transparent
+      border-bottom-color white
+
+    &.night-mode
+      &:before
+        border-top-color transparent
+        border-bottom-color $base-color
+        border-right-color $base-color
+
+.container
+  max-width 850px
+  margin 0 auto
+
+.header
+  margin-bottom 2em
+
+  @media (max-width: 40em)
+    margin-bottom 0
+
+.site-name
+  visuallyhidden()
+
+.site-title
+  font-size 2.2em
+  font-weight 200
+  margin 0
+  margin-bottom 20px
+
+  @media (max-width: 40em)
+    font-size 1.4em
+    margin-bottom 15px
+
+.open-positions
+  font-size 1em
+  font-weight 600
+
+.footer
+  clearfix()
+
+.disclaimer
+  font-weight 600
+  display block
+  line-height 1
+  margin 0
+  padding 0
+  padding-top 6px
+
+.godassistans
+  width 150px
+  height 26px
+  -webkit-background-size 100%
+  background-size 100%
+  background transparent url('images/godassistans.png') top left no-repeat
+  display block
+  text-indent -9999px
+  float right
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+    background transparent url('images/godassistans@2x.png') top left no-repeat
+    -webkit-background-size 100%
+    background-size 100%
