@@ -2,87 +2,110 @@
    $CONTACT FORM
 *------------------------------------*/
 
-.contact
-  padding 2em 0
-  clearfix()
+.form-wrap
+  padding 1.5em 0 2.5em
 
-  input, textarea
-    background-color transparent
-
-  input::-ms-clear
-    width 0
-    height 0
-
-  @media (max-width: 40em)
-    padding 1em 0
-    overflow hidden
-
-.contact-form__block
-  margin-bottom 1.5em
-
-  @media (max-width: 40em)
-    width 100% !important
-
-.asterix
-  color #B94A48
-
-.input__label
-  text-transform uppercase
-  font-weight 600
+.contact-form
   display block
-  font-size 1.1em
-  margin-bottom 8px
-  letter-spacing 1px
+  overflow hidden
+  clearfx()
 
-.input__field, .textarea
+  .no-js &
+    display none
+
+.contact-form__item
   width 100%
   border none
-  vendor('transition', border-left .2s ease)
-
-  &:focus
-    outline none
-    border-left 6px solid $link-color
-
-.input__field
-  font-size 1.6em
-  font-weight 300
-  padding 5px 10px
-  line-height 1.5
-  vendor('border-radius', 0)
-
-  @media (max-width: 40em)
-    font-size 1.3em
-
-.textarea
-  font-size 1.2em
-  font-weight 300
-  line-height 1.5
-  padding 10px
   resize none
-  vendor('border-radius', 0)
-
-.input__file
-  margin-top 15px
-
-.submit-btn
+  border 1px solid #ccc
   -webkit-appearance none
-  background $link-color !important
-  line-height 2.5
-  color #fff
-  text-align center
-  width 100%
+  outline none
+  position relative
+  background-color #f9f9f9
+  clearfx()
+
+.contact-form__message
+  box-sizing border-box
+  font-size 15px
+  font-weight 600
+  color $base-color
+  padding 26px 30px 23px 30px
+  height 70px
+  margin-bottom 16px
+  transition height .2s ease-out
+
+.contact-form__input
+  height 60px
+  box-sizing border-box
+  font-size 15px
+  font-weight 600
+  color $base-color
+  margin-bottom 18px
+  padding 26px 30px 23px 30px
+
+.contact-form__file
+  display block
+  box-sizing border-box
+  font-size 15px
+  font-weight 600
+  height 60px
+  line-height 60px
+  color #A9A9A9
+  margin-bottom 18px
+  padding 0 30px 0 30px
+  margin-bottom 18px
+  cursor pointer
+
+  input
+    position fixed
+    top -1000px
+
+.contact-form__submit
+  background-color $base-color
+  -webkit-appearance none
   border none
-  font-size 1.5em
-  padding-top 5px
-  vendor('border-radius', 4px)
+  color #fff
+  padding 0em 2em
+  height 4em
   text-transform uppercase
   font-weight 600
-  letter-spacing 2px
-  vendor('transition', background .2s ease)
+  font-size 12px
+  letter-spacing 1px
+  transition background-color .25s ease
 
-  &:hover, &:focus
-    background lighten($link-color, 20%) !important
+  &:hover,
+  &:focus
+    background-color $link-color
 
-  @media (max-width: 40em)
-    line-height 2
-    font-size 1.2em
+.form__block-left
+  height 0px
+  overflow hidden
+  transform translateX(-100%)
+  transition height .2s ease-out, transform .5s .5s ease
+
+.form__block-right
+  height 0px
+  overflow hidden
+  transform translateX(100%)
+  transition height .2s ease-out, transform .5s .5s ease
+
+.form__block-submit
+  height 0
+  opacity 0
+  transition height .5s 1s ease, opacity .5s 1s ease-out
+
+.contact-form.expanded
+  .contact-form__message
+    height 200px
+
+  .form__block-left
+    height 150px
+    transform translateX(0)
+
+  .form__block-right
+    height 150px
+    transform translateX(0)
+
+  .form__block-submit
+    height 50px
+    opacity 1
