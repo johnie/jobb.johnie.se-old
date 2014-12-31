@@ -13,7 +13,10 @@ $ gulp
 **Don't forget to add the config.js file**
 
 ```javascript
-// ./src/js/config.js
+/**
+ * ./src/js/config.js
+ */
+
 ;(function () {
   var JobbConfig = JobbConfig || {
 
