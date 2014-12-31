@@ -14,7 +14,7 @@ var concat       = require('gulp-concat');
 
 
 /*------------------------------------*\
-  
+
   Banner
 
 \*------------------------------------*/
@@ -43,6 +43,7 @@ gulp.task('scripts', function() {
       config.bowerjs.base + 'fastclick/lib/fastclick.js',
       config.bowerjs.base + 'svgeezy/svgeezy.js',
       config.bowerjs.base + 'fancyselect/fancySelect.js',
+      config.bowerjs.base + 'jquery-validation/dist/jquery.validate.js',
       config.scripts.src
     ])
     .pipe(concat(

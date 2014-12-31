@@ -92,24 +92,26 @@
           <p>Skicka ditt CV och ett personligt brev till <em class="spam-email">jobb [at] johnie [dot] se</em> där du beskriver dig själv närmare. Eller kontakta mig via <a href="http://twitter.com/johniehjelm">Twitter</a>, <a href="http://facebook.com/johniehjelm">Facebook</a>.</p>
         </article>
         <div class="form-wrap">
-          <form class="contact-form expanded">
+          <form class="contact-form expanded" id="contactForm">
             <div class="grid">
               <div class="grid__item one-whole">
-                <textarea placeholder="Skriv in din ansökan här!" class="contact-form__item  contact-form__message"></textarea>
+                <textarea placeholder="Skriv in din ansökan här!" class="contact-form__item  contact-form__message" name="message" id="message"></textarea>
               </div>
               <div class="grid__item one-half form__block-left">
-                <input type="text" name="" id="" class="contact-form__item  contact-form__input" placeholder="Name">
-                <input type="text" name="" id="" class="contact-form__item  contact-form__input" placeholder="Email">
+                <input type="text" name="name" id="name" class="contact-form__item  contact-form__input" placeholder="Ditt namn">
+                <span class="asterisk">❋</span>
+                <input type="text" name="email" id="email" class="contact-form__item  contact-form__input" placeholder="Din email">
+                <span class="asterisk">❋</span>
               </div>
               <div class="grid__item one-half form__block-right">
-                <input type="text" name="" id="" class="contact-form__item  contact-form__input" placeholder="Telefon">
+                <input type="text" name="phone" id="phone" class="contact-form__item  contact-form__input" placeholder="Ditt telefonnr">
                 <label class="contact-form__item contact-form__file">
                   <input type="file" name="cv" id="cv">
                   <span>Bifoga ditt CV om du vill!</span>
                 </label>
               </div>
               <div class="grid__item one-whole form__block-submit text--right">
-                <input type="submit" value="Skicka din ansökan" class="contact-form__submit">
+                <input type="submit" value="Skicka din ansökan" class="contact-form__submit" id="submit">
               </div>
             </div>
           </form>
@@ -122,7 +124,7 @@
               </small>
             </div>
             <div class="flexbox__item one-half">
-              <a href="http://godassistans.se" class="godassistans" target="_blank">God Assistans</a>
+              <a href="http://godassistans.nu" class="godassistans" target="_blank">God Assistans</a>
             </div>
           </div>
         </footer>
