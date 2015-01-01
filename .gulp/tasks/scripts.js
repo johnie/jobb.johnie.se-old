@@ -44,6 +44,7 @@ gulp.task('scripts', function() {
       config.bowerjs.base + 'svgeezy/svgeezy.js',
       config.bowerjs.base + 'fancyselect/fancySelect.js',
       config.bowerjs.base + 'jquery-validation/dist/jquery.validate.js',
+      config.bowerjs.base + 'fancyselect/fancySelect.js.js',
       config.scripts.src
     ])
     .pipe(concat(

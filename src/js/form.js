@@ -13,12 +13,13 @@
     textarea: $('.contact-form__message'),
     expandedClass: 'expanded',
     subject: 'Jag söker jobbet som din assistent',
+    messagesWrapper: $('#formMessages'),
     formFields: {
       message: $('#message'),
       name: $('#name'),
       email: $('#email'),
       phone: $('#phone'),
-      file: $('#cv'),
+      shift: $('#shift'),
       submit: $('#submit')
     }
   };
@@ -50,6 +51,37 @@
         });
       }
     });
+
+    $('.contact-form__shift').fancySelect();
+  };
+
+
+  /**
+   * Validate the form
+   */
+  contactForm.validate = function () {
+    var _self = this,
+        responseMessage = _self.messagesWrapper;
+
+    $('#contactForm').validate({
+      rules: {
+        name: "required",
+        email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        name: "Vänligen fyll i ditt namn.",
+        email: {
+          required: "Jag behöver en mailadress för att kunna kontakta dig.",
+          email: "Din Email måste vara i formatet namn@domän.com"
+        }
+      },
+      submitHandler: function() {
+        _self.sendForm();
+      }
+    });
   };
 
 
@@ -69,25 +101,14 @@
       var name  = formFields.name.val();
       var email = formFields.email.val();
       var phone = formFields.phone.val();
-      var file  = formFields.file;
-
-      // File input
-      if( file.val() !== '') {
-        file[0].files[0];
-        var reader = new FileReader();
-        var fileResult = btoa(event.target.result);
-        reader.readAsBinaryString(file);
-      }
-
-      // Get file type and name
-      var fileType = file.type;
-      var fileName = file.name;
+      var shift = formFields.shift.val();
 
       // Message
       var theMessage = [
           'Hej! Jag heter ' + name,
           '' + msg,
           ' ',
+          '<strong>Jag kan tänka mig jobba:</strong> ' + shift,
           '<strong>Email:</strong> ' + email,
           '<strong>Telefon:</strong> ' + phone
           ].join('<br>');
@@ -109,16 +130,9 @@
               'email': JobbConfig.email,
               'name': JobbConfig.name,
               'type': 'to'
-            }],
-            'attachements': [{
-              'type': fileType,
-              'name': fileName,
-              'content': fileResult
             }]
           }
         }
-      }).success(function (res) {
-        console.log(res);
       });
     });
   };
@@ -129,7 +143,7 @@
    */
   contactForm.init = function () {
     this.expand();
-    this.sendForm();
+    this.validate();
   };
 
   $(document).ready(function () {

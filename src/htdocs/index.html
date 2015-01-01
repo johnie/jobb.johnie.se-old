@@ -92,23 +92,33 @@
           <p>Skicka ditt CV och ett personligt brev till <em class="spam-email">jobb [at] johnie [dot] se</em> där du beskriver dig själv närmare. Eller kontakta mig via <a href="http://twitter.com/johniehjelm">Twitter</a>, <a href="http://facebook.com/johniehjelm">Facebook</a>.</p>
         </article>
         <div class="form-wrap">
+          <div class="form-messages" id="formMessages">
+            <div class="message-success">
+              <h2>Tack!</h2>
+              <p>Jag försöker höra av mig så snart som möjligt, men vill du skynda på mig lite så <a href="http://twitter.com/johniehjelm">skriv gärna en tweet!</a></p>
+            </div>
+          </div>
           <form class="contact-form" id="contactForm">
             <div class="grid">
               <div class="grid__item one-whole">
                 <textarea placeholder="Skriv in din ansökan här!" class="contact-form__item  contact-form__message" name="message" id="message"></textarea>
               </div>
               <div class="grid__item one-half form__block-left">
-                <input type="text" name="name" id="name" class="contact-form__item  contact-form__input" placeholder="Ditt namn">
+                <input type="text" name="name" id="name" class="contact-form__item  contact-form__input" placeholder="Ditt namn" required>
                 <span class="asterisk">❋</span>
-                <input type="text" name="email" id="email" class="contact-form__item  contact-form__input" placeholder="Din email">
+                <input type="text" name="email" id="email" class="contact-form__item  contact-form__input" placeholder="Din email" required>
                 <span class="asterisk">❋</span>
               </div>
               <div class="grid__item one-half form__block-right">
                 <input type="text" name="phone" id="phone" class="contact-form__item  contact-form__input" placeholder="Ditt telefonnr">
-                <label class="contact-form__item contact-form__file">
-                  <input type="file" name="cv" id="cv">
-                  <span>Bifoga ditt CV om du vill!</span>
-                </label>
+                <select name="shift" id="shift" class="contact-form__item contact-form__shift">
+                  <option value="Latmask" selected>Vilka tider kan du tänka dig jobba?</option>
+                  <option value="Förmiddagar">Förmiddagar</option>
+                  <option value="Eftermiddagar">Eftermiddagar</option>
+                  <option value="Eftermiddagar">Kvällar</option>
+                  <option value="Eftermiddagar">Helger</option>
+                  <option value="Alla Tider">Alla ovanstående</option>
+                </select>
               </div>
               <div class="grid__item one-whole form__block-submit text--right">
                 <input type="submit" value="Skicka din ansökan" class="contact-form__submit" id="submit">
