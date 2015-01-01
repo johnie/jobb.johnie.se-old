@@ -4,6 +4,7 @@
 ;(function () {
   var contactForm = contactForm || {};
 
+
   /**
    * contactForm config
    */
@@ -15,29 +16,39 @@
     formFields: {
       message: $('#message'),
       name: $('#name'),
-      email: $('#name'),
-      phone: $('#name'),
+      email: $('#email'),
+      phone: $('#phone'),
       file: $('#cv'),
       submit: $('#submit')
     }
   };
 
 
-
   /**
    * Contact form animation
    */
   contactForm.expand = function () {
-    var _self = this;
+    var _self = this,
+        form = _self.config.form,
+        textarea = _self.config.textarea,
+        expandClass = _self.config.expandedClass;
 
-    _self.config.textarea.on('focus', function(e) {
+    textarea.on('focus', function(e) {
       e.preventDefault();
-      // Add class 'expanded' to contact form
-      _self.config.form.addClass(_self.config.expandedClass);
-      // Scroll to the top of the form
-      $('body, html').animate({
-        scrollTop: $(_self.config.form).offset().top
-      });
+
+      /**
+       * Add class 'expanded' to contact form
+       * on focus in textarea, if it doesn't already
+       * have that class
+       */
+      if( !form.hasClass(expandClass) ) {
+        form.addClass(expandClass);
+
+        // Scroll to the top of the form
+        $('body, html').animate({
+          scrollTop: $(form).offset().top
+        });
+      }
     });
   };
 
@@ -49,46 +60,48 @@
     var _self = this,
         formFields = _self.config.formFields;
 
-    // Store the fields
-    var msg   = formFields.message.val();
-    var name  = formFields.name.val();
-    var email = formFields.email.val();
-    var phone = formFields.phone.val();
-    var file  = formFields.file;
-
-    // File input
-    if( file.val() !== '') {
-      file[0].files[0];
-      var reader = new FileReader();
-      var fileResult = btoa(event.target.result);
-      reader.readAsBinaryString(file);
-    }
-
-    // Get file type and name
-    var fileType = file.type;
-    var fileName = file.name;
-
-    // Message
-    var theMessage = [
-        'Hej! Jag heter ' + name,
-        '' + msg,
-        'Email: ' + email,
-        'Telefon: ' + phone
-        ].join('\n');
-
     // Ajax post
-    $('#form').submit(function(e) {
+    $('#contactForm').submit(function(e) {
       e.preventDefault();
+
+      // Store the fields
+      var msg   = formFields.message.val();
+      var name  = formFields.name.val();
+      var email = formFields.email.val();
+      var phone = formFields.phone.val();
+      var file  = formFields.file;
+
+      // File input
+      if( file.val() !== '') {
+        file[0].files[0];
+        var reader = new FileReader();
+        var fileResult = btoa(event.target.result);
+        reader.readAsBinaryString(file);
+      }
+
+      // Get file type and name
+      var fileType = file.type;
+      var fileName = file.name;
+
+      // Message
+      var theMessage = [
+          'Hej! Jag heter ' + name,
+          '' + msg,
+          ' ',
+          '<strong>Email:</strong> ' + email,
+          '<strong>Telefon:</strong> ' + phone
+          ].join('<br>');
+
       $.ajax({
         type: 'POST',
         url: 'https://mandrillapp.com/api/1.0/messages/send.json',
         data: {
           'key': JobbConfig.mandrill,
           'message': {
-            'from_email': email,
-            'from_name': name,
+            'from_email': 'no-reply@johnie.se',
+            'from_name': 'no-reply@johnie.se',
             'headers': {
-              'Reply-To': email
+              'Reply-To': 'no-reply@johnie.se'
             },
             'subject': _self.config.subject,
             'html': theMessage,
@@ -104,10 +117,8 @@
             }]
           }
         }
-      }).done(function (response){
-        alert('We have sent your message!');
-      }).fail(function (response) {
-        alert(response);
+      }).success(function (res) {
+        console.log(res);
       });
     });
   };
@@ -121,7 +132,7 @@
     this.sendForm();
   };
 
-  $(function () {
+  $(document).ready(function () {
     contactForm.init();
   });
 })();
