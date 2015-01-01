@@ -45,7 +45,7 @@
   /**
    * Send the message
    */
-  contactForm.send = function () {
+  contactForm.sendForm = function () {
     var _self = this,
         formFields = _self.config.formFields;
 
@@ -76,35 +76,39 @@
         'Telefon: ' + phone
         ].join('\n');
 
-    $.ajax({
-      type: 'POST',
-      url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-      data: {
-        'key': JobbConfig.mandrill,
-        'message': {
-          'from_email': email,
-          'from_name': name,
-          'headers': {
-            'Reply-To': email
-          },
-          'subject': _self.config.subject,
-          'html': theMessage,
-          'to': [{
-            'email': JobbConfig.email,
-            'name': JobbConfig.name,
-            'type': 'to'
-          }],
-          'attachements': [{
-            'type': fileType,
-            'name': fileName,
-            'content': fileResult
-          }]
+    // Ajax post
+    $('#form').submit(function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: 'POST',
+        url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+        data: {
+          'key': JobbConfig.mandrill,
+          'message': {
+            'from_email': email,
+            'from_name': name,
+            'headers': {
+              'Reply-To': email
+            },
+            'subject': _self.config.subject,
+            'html': theMessage,
+            'to': [{
+              'email': JobbConfig.email,
+              'name': JobbConfig.name,
+              'type': 'to'
+            }],
+            'attachements': [{
+              'type': fileType,
+              'name': fileName,
+              'content': fileResult
+            }]
+          }
         }
-      }
-    }).done(function (response){
-      alert('We have sent your message!');
-    }).fail(function (response) {
-      alert(response);
+      }).done(function (response){
+        alert('We have sent your message!');
+      }).fail(function (response) {
+        alert(response);
+      });
     });
   };
 
@@ -114,14 +118,10 @@
    */
   contactForm.init = function () {
     this.expand();
+    this.sendForm();
   };
 
   $(function () {
     contactForm.init();
-
-    $('#form').submit(function(e) {
-      e.preventDefault();
-      contactForm.send();
-    });
   });
 })();
