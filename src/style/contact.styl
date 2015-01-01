@@ -13,6 +13,29 @@
   .no-js &
     display none
 
+  label.error
+    position absolute
+    right 25px
+    top -10px
+    background-color #C02932
+    color #fff
+    padding 5px 10px
+    font-size 12px
+    display block
+    white-space nowrap
+
+    &:after
+      content ''
+      display block
+      width 0
+      height 0
+      border 3px solid transparent
+      border-top-color #C02932
+      border-right-color #C02932
+      position absolute
+      top 100%
+      right 0
+
 .contact-form__item
   width 100%
   border none
