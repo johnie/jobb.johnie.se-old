@@ -60,8 +60,7 @@
    * Validate the form
    */
   contactForm.validate = function () {
-    var _self = this,
-        responseMessage = _self.messagesWrapper;
+    var _self = this;
 
     $('#contactForm').validate({
       rules: {
@@ -90,6 +89,7 @@
    */
   contactForm.sendForm = function () {
     var _self = this,
+        responseMessage = _self.config.messagesWrapper;
         formFields = _self.config.formFields;
 
     // Ajax post
@@ -133,6 +133,12 @@
             }]
           }
         }
+      }).success(function () {
+        $('body, html').animate({
+          scrollTop: responseMessage.offset().top
+        }, 250, function () {
+          responseMessage.slideDown('fast');
+        });
       });
     });
   };

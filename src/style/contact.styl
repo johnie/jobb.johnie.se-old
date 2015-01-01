@@ -3,7 +3,7 @@
 *------------------------------------*/
 
 .form-wrap
-  padding 0 0 2.5em
+  padding 1em 0 2.0em
 
 .contact-form
   display block
@@ -31,7 +31,7 @@
   color $base-color
   padding 26px 30px 23px 30px
   height 70px
-  margin-bottom 16px
+  margin-bottom 0
   transition height .2s ease-out
 
 .contact-form__input
@@ -139,10 +139,12 @@
     background-color $link-color
 
 .form__block-left
+  height 0
   transform translateX(-100%)
   transition height .2s ease-out, transform .5s .5s ease
 
 .form__block-right
+  height 0
   transform translateX(100%)
   transition height .2s ease-out, transform .5s .5s ease
 
@@ -154,11 +156,14 @@
 .contact-form.expanded
   .contact-form__message
     height 200px
+    margin-bottom 16px
 
   .form__block-left
+    height 155px
     transform translateX(0)
 
   .form__block-right
+    height 155px
     transform translateX(0)
 
   .form__block-submit
@@ -181,6 +186,7 @@
  */
 .form-messages
   margin-bottom 20px
+  display none
 
 .message-success
   padding 1.5em
