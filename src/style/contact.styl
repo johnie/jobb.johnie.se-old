@@ -13,7 +13,7 @@
   .no-js &
     display none
 
-  label.error
+  div.error
     position absolute
     right 25px
     top -10px
@@ -161,6 +161,16 @@
   .night-mode &
     background-color $link-color
 
+  &:disabled
+    opacity .5
+
+    &:hover,
+    &:focus
+      background-color $base-color
+
+    .night-mode &
+      background-color $link-color
+
 .form__block-left
   height 0
   transform translateX(-100%)
@@ -209,7 +219,6 @@
  */
 .form-messages
   margin-bottom 20px
-  display none
 
 .message-success
   padding 1.5em

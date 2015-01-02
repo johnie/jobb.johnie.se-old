@@ -22,8 +22,5 @@
     "fastclick": "~1.0.3",
     "svgeezy": "~1.0.0",
     "fancyselect": "~1.1.0"
-  },
-  "devDependencies": {
-    "jquery-validation": "~1.13.1"
   }
 }

@@ -1,5 +1,12 @@
 ;(function () {
-  angular.module('jobb', []).controller('JobbController', function($scope) {
+  /**
+   * Angular App
+   */
+  angular.module('jobb', ['jobb.ContactController'])
+  /**
+   * Main controller
+   */
+  .controller('JobbController', function($scope) {
     var nightMode;
     nightMode = false;
     if (localStorage['isNightMode'] === '' || (localStorage['isNightMode'] == null)) {
