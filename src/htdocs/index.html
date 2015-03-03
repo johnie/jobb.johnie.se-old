@@ -117,11 +117,6 @@
               </div>
               <div class="grid__item one-half form__block-right">
                 <input type="text" name="phone" id="phone" class="contact-form__item  contact-form__input" placeholder="Ditt telefonnr" ng-model="formData.phone">
-                <select name="shift" id="shift" class="contact-form__item contact-form__shift" ng-model="formData.shift" ng-options="shift.value for shift in workShifts track by shift.content">
-                  <option value="">Vilka tider kan du tänka dig jobba?</option>
-                </select>
-              </div>
-              <div class="grid__item one-whole form__block-submit text--right">
                 <input type="submit" value="Skicka din ansökan" class="contact-form__submit" ng-disabled="contactForm.$invalid" ng-click="processForm(contactForm.$valid)">
               </div>
             </div>

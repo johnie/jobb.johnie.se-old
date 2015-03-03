@@ -11,7 +11,6 @@ angular.module('jobb.ContactService', []).service('ContactService', function($ht
         'Hej! Jag heter ' + prop.name,
         '' + prop.message,
         ' ',
-        '<strong>Jag kan tänka mig jobba:</strong> ' + prop.shift,
         '<strong>Email:</strong> ' + prop.email,
         '<strong>Telefon:</strong> ' + prop.phone
         ].join('<br>');
@@ -22,10 +21,10 @@ angular.module('jobb.ContactService', []).service('ContactService', function($ht
       data: {
         'key': JobbConfig.mandrill,
         'message': {
-          'from_email': 'no-reply@johnie.se',
-          'from_name': 'no-reply@johnie.se',
+          'from_email': 'noreply@johnie.se',
+          'from_name': 'noreply@johnie.se',
           'headers': {
-            'Reply-To': 'no-reply@johnie.se'
+            'Reply-To': 'noreply@johnie.se'
           },
           'subject': JobbConfig.subject,
           'html': theMessage,
