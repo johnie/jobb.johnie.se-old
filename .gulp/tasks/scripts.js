@@ -11,6 +11,7 @@ var uglify       = require('gulp-uglify');
 var header       = require('gulp-header');
 var rename       = require('gulp-rename');
 var concat       = require('gulp-concat');
+var size         = require('gulp-size');
 
 
 /*------------------------------------*\
@@ -39,7 +40,7 @@ var banner = [
 gulp.task('scripts', function() {
   return gulp.src([
       config.bowerjs.base + 'angular/angular.js',
-      config.bowerjs.base + 'angular-route/angular-route.js',
+      // config.bowerjs.base + 'angular-route/angular-route.js',
       config.bowerjs.base + 'fastclick/lib/fastclick.js',
       config.bowerjs.base + 'svgeezy/svgeezy.js',
       config.scripts.src
@@ -50,9 +51,9 @@ gulp.task('scripts', function() {
     .pipe(browserSync.reload({
       stream:true
     }))
-    // .pipe(uglify({
-    //   mangle: false
-    // }))
+    .pipe(uglify({
+      mangle: false
+    }))
     .pipe(rename({
       suffix: '.min'
     }))
@@ -62,4 +63,5 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest(
       config.scripts.dest
     ))
+    .pipe(size({title: 'scripts'}));
 });

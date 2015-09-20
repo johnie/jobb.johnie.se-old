@@ -1,0 +1,141 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE]>           <html class="no-js ie-shit"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sv" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
+<head>
+
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//use.typekit.net/">
+  <link rel="dns-prefetch" href="https://cdn.getshar.es">
+
+  <meta name="author" content="Johnie Hjelm">
+  <meta name="description" content="Jobba som personlig assistent åt Johnie Hjelm">
+  <meta name="keywords" content="Personlig, Assistent, Jobb, Johnie, Hjelm">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui" />
+  <meta property="og:title" content="Johnie Hjelm &middot; Jag söker en personlig assistent." />
+  <meta property="og:description" content="Jag är en passionerad Webbdesigner och söker en personlig assistent." />
+  <meta property="og:image" content="images/social.png" />
+
+  <link rel="stylesheet" type="text/css" href="style.min.css">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//use.typekit.net/wja3aze.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  <!--[if lt IE 9]>
+   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+<title>Johnie Hjelm &middot; Jag söker en personlig assistent.</title>
+
+<meta charset="UTF-8" />
+</head>
+<body ng-app="jobb">
+  <div class="site" ng-controller="JobbController">
+    <figure class="presentation" role="presentation">
+      <div class="social">
+        <script type="text/javascript" src="https://cdn.getshar.es/lib/0.8.0.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.getshar.es/lib/0.8.0.min.css"/>
+
+        <script type="text/javascript">
+          new GetShare({
+            /*root: jQueryElement*/
+            network: "twitter",
+            button: {text: "Tweet"},
+            share: {
+              url: "http://jobb.johnie.se/",
+              message: "Jobba som personlig assistent åt @johniehjelm | http://jobb.johnie.se/"
+            }
+          });
+          new GetShare({
+            network: "facebook",
+            button: {text: "Dela"},
+            share: {
+              url: "http://jobb.johnie.se/",
+              message: "Jobba som personlig assistent åt Johnie!"
+            }
+          });
+        </script>
+      </div>
+    </figure>
+    <main class="main" role="main" ng-class="{ true: 'night-mode'}[isNightMode]">
+      <label class="night-mode__btn">
+        <input type="checkbox" ng-model="isNightMode">
+        <span ng-class="{ true: 'moon'}[isNightMode]"></span>
+      </label>
+      <div class="container">
+        <header class="header" role="header">
+          <h1 class="site-name">Johnie Hjelm</h1>
+          <h2 class="site-title"><span>Godmorgon! </span> Jag är en driven utvecklare och designer som söker en personlig assistent.</h2>
+          <small class="open-positions">1 plats, deltid.</small>
+        </header>
+        <article class="article" role="article">
+
+          {% block content %}
+          {% endblock %}
+
+        </article>
+        <div class="form-wrap" ng-controller="ContactCtrl">
+          <div class="form-messages" id="formMessages" ng-show="submitted">
+            <div class="message-success">
+              <h2>Tack!</h2>
+              <p>Jag försöker höra av mig så snart som möjligt, men vill du skynda på mig lite så <a href="http://twitter.com/johniehjelm">skriv gärna en tweet!</a></p>
+            </div>
+          </div>
+          <form class="contact-form" ng-class="showForm ? 'expanded' : ''" name="contactForm" ng-submit="processForm(contactForm.$valid)" novalidate>
+            <div class="grid">
+              <div class="grid__item one-whole">
+                <textarea placeholder="Skriv in din ansökan här!" class="contact-form__item  contact-form__message" name="message" id="message" ng-focus="isFocused()" ng-model="formData.message"></textarea>
+              </div>
+              <div class="grid__item one-half form__block-left">
+                <div class="pos--relative">
+                  <input type="text" name="name" id="name" class="contact-form__item  contact-form__input" placeholder="Ditt namn" ng-model="formData.name" ng-minlength="3" required>
+                  <span class="asterisk">❋</span>
+                  <div class="error" ng-show="formData.name.$invalid && !formData.name.$pristine">{{ errorMessages.name }}</div>
+                </div>
+                <div class="pos--relative">
+                  <input type="email" name="email" id="email" class="contact-form__item  contact-form__input" placeholder="Din email" ng-model="formData.email" required>
+                  <span class="asterisk">❋</span>
+                  <div class="error" ng-show="formData.email.$invalid && !formData.email.$pristine">{{ errorMessages.email }}</div>
+                </div>
+              </div>
+              <div class="grid__item one-half form__block-right">
+                <input type="text" name="phone" id="phone" class="contact-form__item  contact-form__input" placeholder="Ditt telefonnr" ng-model="formData.phone">
+                <input type="submit" value="Skicka din ansökan" class="contact-form__submit" ng-disabled="contactForm.$invalid" ng-click="processForm(contactForm.$valid)">
+              </div>
+            </div>
+          </form>
+        </div>
+        <footer class="footer" role="contentinfo">
+          <div class="flexbox">
+            <div class="flexbox__item one-half">
+              <small class="disclaimer">
+              The goal is to have a job that you don't refer as "work".
+              </small>
+            </div>
+            <div class="flexbox__item one-half">
+              <a href="http://godassistans.nu" class="godassistans" target="_blank">God Assistans</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </main>
+  </div>
+  <script src="master.min.js"></script>
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17365662-21']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body>
+</html>

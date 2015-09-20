@@ -9,6 +9,7 @@ var package      = require('../../package.json');
 var header       = require('gulp-header');
 var rename       = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
+var size         = require('gulp-size');
 
 /*------------------------------------*\
 
@@ -40,9 +41,10 @@ gulp.task('style', ['images'], function () {
     .on('error', handleErrors)
     .pipe(sourcemaps.write())
     .pipe(autoprefixer({ browsers: ['last 2 version'] }))
-    // .pipe(cssmin()) Fix for production
+    .pipe(cssmin())
     .pipe(rename({ suffix: '.min' }))
     .pipe(header(banner, { package: package }))
     .pipe(gulp.dest(config.dest))
-    .pipe(browserSync.reload({stream:true}));
+    .pipe(browserSync.reload({stream:true}))
+    .pipe(size({title: 'style'}));
 });
