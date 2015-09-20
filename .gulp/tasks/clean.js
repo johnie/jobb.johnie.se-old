@@ -1,8 +1,11 @@
 var gulp   = require('gulp');
-var rimraf = require('gulp-rimraf');
+var del    = require('del');
 var config = require('../config').basePaths;
 
-gulp.task('clean:before', function() {
-  return gulp.src(config.dest, { read: false })
-    .pipe(rimraf({ force: true }));
+gulp.task('clean:before', function(cb) {
+  del([ './build/**' ], {
+    read: false,
+    dot: true,
+    force: true
+  }, cb());
 });

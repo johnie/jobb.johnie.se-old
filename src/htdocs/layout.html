@@ -36,28 +36,19 @@
   <div class="site" ng-controller="JobbController">
     <figure class="presentation" role="presentation">
       <div class="social">
-        <script type="text/javascript" src="https://cdn.getshar.es/lib/0.8.0.min.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.getshar.es/lib/0.8.0.min.css"/>
-
-        <script type="text/javascript">
-          new GetShare({
-            /*root: jQueryElement*/
-            network: "twitter",
-            button: {text: "Tweet"},
-            share: {
-              url: "http://jobb.johnie.se/",
-              message: "Jobba som personlig assistent åt @johniehjelm | http://jobb.johnie.se/"
-            }
-          });
-          new GetShare({
-            network: "facebook",
-            button: {text: "Dela"},
-            share: {
-              url: "http://jobb.johnie.se/",
-              message: "Jobba som personlig assistent åt Johnie!"
-            }
-          });
-        </script>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.4&appId=399645606715308";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-share-button" data-href="http://jobb.johnie.se/" data-layout="button_count"></div>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <div style="position: relative; left: 10px; top: 5px; display: inline-block;">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jobb.johnie.se/" data-via="JohnieHjelm">Tweet</a>
+        </div>
       </div>
     </figure>
     <main class="main" role="main" ng-class="{ true: 'night-mode'}[isNightMode]">
@@ -69,7 +60,7 @@
         <header class="header" role="header">
           <h1 class="site-name">Johnie Hjelm</h1>
           <h2 class="site-title"><span>Godmorgon! </span> Jag är en driven utvecklare och designer som söker en personlig assistent.</h2>
-          <small class="open-positions">1 plats, deltid.</small>
+          <small class="open-positions">1 plats, heltid.</small>
         </header>
         <article class="article" role="article">
 
