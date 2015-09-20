@@ -42,7 +42,6 @@ gulp.task('scripts', function() {
       config.bowerjs.base + 'angular-route/angular-route.js',
       config.bowerjs.base + 'fastclick/lib/fastclick.js',
       config.bowerjs.base + 'svgeezy/svgeezy.js',
-      config.bowerjs.base + 'fancyselect/fancySelect.js',
       config.scripts.src
     ])
     .pipe(concat(

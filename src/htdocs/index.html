@@ -6,6 +6,10 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="sv" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
 <head>
 
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//use.typekit.net/">
+  <link rel="dns-prefetch" href="https://cdn.getshar.es">
+
   <meta name="author" content="Johnie Hjelm">
   <meta name="description" content="Jobba som personlig assistent åt Johnie Hjelm">
   <meta name="keywords" content="Personlig, Assistent, Jobb, Johnie, Hjelm">
@@ -16,8 +20,7 @@
 
   <link rel="stylesheet" type="text/css" href="style.min.css">
 
-  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-  <script type="text/javascript">google.load("jquery", "1");</script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="//use.typekit.net/wja3aze.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
@@ -33,10 +36,8 @@
   <div class="site" ng-controller="JobbController">
     <figure class="presentation" role="presentation">
       <div class="social">
-        <!--<script type="text/javascript"
-        src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
-        <script type="text/javascript" src="http://cdn.getshar.es/lib/0.8.0.min.js"></script>
-        <link type="text/css" rel="stylesheet" href="http://cdn.getshar.es/lib/0.8.0.min.css"/>
+        <script type="text/javascript" src="https://cdn.getshar.es/lib/0.8.0.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.getshar.es/lib/0.8.0.min.css"/>
 
         <script type="text/javascript">
           new GetShare({
@@ -101,7 +102,7 @@
           <form class="contact-form" ng-class="showForm ? 'expanded' : ''" name="contactForm" ng-submit="processForm(contactForm.$valid)" novalidate>
             <div class="grid">
               <div class="grid__item one-whole">
-                <textarea placeholder="Skriv in din ansökan här!" class="contact-form__item  contact-form__message" name="message" id="message" ng-focus="showForm = true;" ng-model="formData.message"></textarea>
+                <textarea placeholder="Skriv in din ansökan här!" class="contact-form__item  contact-form__message" name="message" id="message" ng-focus="isFocused()" ng-model="formData.message"></textarea>
               </div>
               <div class="grid__item one-half form__block-left">
                 <div class="pos--relative">

@@ -38,8 +38,6 @@
       protectedEmail = protectedEmail.replace(' [dot] ', '.');
       $(this).html(protectedEmail).replaceWith('<a href=\'mailto:' + $(this).text() + '\'>' + $(this).text() + '</a>');
     });
-
-    $('.contact-form__shift').fancySelect();
   });
 
   /**
