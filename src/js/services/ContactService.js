@@ -6,13 +6,18 @@ angular.module('jobb.ContactService', []).service('ContactService', function($ht
   var Contact = {};
 
   Contact.post = function (prop) {
+
+    // Get Körkort property
+    var korkort = (prop.korkort) ? 'Ja' : 'Nej';
+
     // Message
     var theMessage = [
         'Hej! Jag heter ' + prop.name,
         '' + prop.message,
         ' ',
         '<strong>Email:</strong> ' + prop.email,
-        '<strong>Telefon:</strong> ' + prop.phone
+        '<strong>Telefon:</strong> ' + prop.phone,
+        '<strong>Körkort:</strong> ' + korkort
         ].join('<br>');
 
     $http({

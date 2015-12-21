@@ -94,6 +94,10 @@
               </div>
               <div class="grid__item one-half form__block-right">
                 <input type="text" name="phone" id="phone" class="contact-form__item  contact-form__input" placeholder="Ditt telefonnr" ng-model="formData.phone">
+                <label for="korkort" class="contact-form__checkbox">
+                  <input type="checkbox" name="korkort" id="korkort" ng-model="formData.korkort">
+                  <span>Har du körkort?</span>
+                </label>
                 <input type="submit" value="Skicka din ansökan" class="contact-form__submit" ng-disabled="contactForm.$invalid" ng-click="processForm(contactForm.$valid)">
               </div>
             </div>
@@ -103,7 +107,7 @@
           <div class="flexbox">
             <div class="flexbox__item one-half">
               <small class="disclaimer">
-              The goal is to have a job that you don't refer as "work".
+              The goal is to have a job that you don't refer to as "work".
               </small>
             </div>
             <div class="flexbox__item one-half">
