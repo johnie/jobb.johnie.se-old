@@ -7,7 +7,7 @@
 <head>
 
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="//use.typekit.net/">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
   <link rel="dns-prefetch" href="https://cdn.getshar.es">
 
   <meta name="author" content="Johnie Hjelm">
@@ -15,14 +15,14 @@
   <meta name="keywords" content="Personlig, Assistent, Jobb, Johnie, Hjelm">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui" />
   <meta property="og:title" content="Johnie Hjelm &middot; Jag söker en personlig assistent." />
-  <meta property="og:description" content="Jag är en passionerad Webbdesigner och söker en personlig assistent." />
-  <meta property="og:image" content="images/social.png" />
+  <meta property="og:description" content="Jag är en passionerad webbutvecklare och designer söker en personlig assistent." />
+  <meta property="og:image" content="images/johnie3.jpg" />
+  <meta property="og:type" content="article" />
 
   <link rel="stylesheet" type="text/css" href="style.min.css">
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script type="text/javascript" src="//use.typekit.net/wja3aze.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
   <!--[if lt IE 9]>
    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -34,23 +34,7 @@
 </head>
 <body ng-app="jobb">
   <div class="site" ng-controller="JobbController">
-    <figure class="presentation" role="presentation">
-      <div class="social">
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.4&appId=399645606715308";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        <div class="fb-share-button" data-href="http://jobb.johnie.se/" data-layout="button_count"></div>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        <div style="position: relative; left: 10px; top: 5px; display: inline-block;">
-          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jobb.johnie.se/" data-via="JohnieHjelm">Tweet</a>
-        </div>
-      </div>
-    </figure>
+    <figure class="presentation" role="presentation"></figure>
     <main class="main" role="main" ng-class="{ true: 'night-mode'}[isNightMode]">
       <label class="night-mode__btn">
         <input type="checkbox" ng-model="isNightMode">
@@ -59,7 +43,7 @@
       <div class="container">
         <header class="header" role="header">
           <h1 class="site-name">Johnie Hjelm</h1>
-          <h2 class="site-title"><span>Godmorgon! </span> Jag är en driven utvecklare och designer som söker en personlig assistent.</h2>
+          <h2 class="site-title"><span>Godmorgon! </span> Jag är en driven webbutvecklare och designer som söker en personlig assistent.</h2>
           <small class="open-positions">1 plats, heltid.</small>
         </header>
         <article class="article" role="article">
@@ -68,41 +52,7 @@
           {% endblock %}
 
         </article>
-        <div class="form-wrap" ng-controller="ContactCtrl">
-          <div class="form-messages" id="formMessages" ng-show="submitted">
-            <div class="message-success">
-              <h2>Tack!</h2>
-              <p>Jag försöker höra av mig så snart som möjligt, men vill du skynda på mig lite så <a href="http://twitter.com/johniehjelm">skriv gärna en tweet!</a></p>
-            </div>
-          </div>
-          <form class="contact-form" ng-class="showForm ? 'expanded' : ''" name="contactForm" ng-submit="processForm(contactForm.$valid)" novalidate>
-            <div class="grid">
-              <div class="grid__item one-whole">
-                <textarea placeholder="Skriv in din ansökan här!" class="contact-form__item  contact-form__message" name="message" id="message" ng-focus="isFocused()" ng-model="formData.message"></textarea>
-              </div>
-              <div class="grid__item one-half form__block-left">
-                <div class="pos--relative">
-                  <input type="text" name="name" id="name" class="contact-form__item  contact-form__input" placeholder="Ditt namn" ng-model="formData.name" ng-minlength="3" required>
-                  <span class="asterisk">❋</span>
-                  <div class="error" ng-show="formData.name.$invalid && !formData.name.$pristine">{{ errorMessages.name }}</div>
-                </div>
-                <div class="pos--relative">
-                  <input type="email" name="email" id="email" class="contact-form__item  contact-form__input" placeholder="Din email" ng-model="formData.email" required>
-                  <span class="asterisk">❋</span>
-                  <div class="error" ng-show="formData.email.$invalid && !formData.email.$pristine">{{ errorMessages.email }}</div>
-                </div>
-              </div>
-              <div class="grid__item one-half form__block-right">
-                <input type="text" name="phone" id="phone" class="contact-form__item  contact-form__input" placeholder="Ditt telefonnr" ng-model="formData.phone">
-                <label for="korkort" class="contact-form__checkbox">
-                  <input type="checkbox" name="korkort" id="korkort" ng-model="formData.korkort">
-                  <span>Har du körkort?</span>
-                </label>
-                <input type="submit" value="Skicka din ansökan" class="contact-form__submit" ng-disabled="contactForm.$invalid" ng-click="processForm(contactForm.$valid)">
-              </div>
-            </div>
-          </form>
-        </div>
+        
         <footer class="footer" role="contentinfo">
           <div class="flexbox">
             <div class="flexbox__item one-half">
